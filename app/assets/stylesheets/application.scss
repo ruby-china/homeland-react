@@ -1,0 +1,14 @@
+/*
+ *= require_self
+ */
+
+@import "bootstrap";
+
+#main {
+  min-height: 100px;
+  padding: 15px 0;
+}
+
+#footer {
+  .container { padding-top: 30px; padding-bottom: 50px; }
+}
