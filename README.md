@@ -13,4 +13,4 @@ rails db:create
 foreman start
 ```
 
-and the open http://localhost:3000
+and the open http://localhost:5000

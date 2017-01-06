@@ -4,13 +4,8 @@
  *= require_self
  */
 
-#main {
-  min-height: 100px;
-  padding: 15px 0;
-}
-
-#footer {
-  .container { padding-top: 30px; padding-bottom: 50px; }
+body {
+  padding-top: 55px;
 }
 
 .main-layout {
@@ -46,6 +41,14 @@
   &:hover {
     text-decoration: none;
     background: #F0F0F0;
+  }
+}
+
+.page-loading {
+  padding: 20px 0;
+  .text {
+    text-align: center;
+    margin-bottom: 10px;
   }
 }
 

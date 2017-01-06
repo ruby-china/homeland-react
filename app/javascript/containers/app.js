@@ -7,7 +7,7 @@ export class App extends Component {
     return (
       <div id="app">
         <Header />
-        <div id="main">
+        <div id="main" className="main-layout">
           <div className="container">
             {this.props.children}
           </div>

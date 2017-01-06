@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 export class Header extends Component {
   render() {
     return (
-      <nav id="header" className="navbar navbar-light bg-faded">
+      <nav id="header" className="navbar navbar-light navbar-fixed-top bg-faded">
         <div className="container">
           <Link to="/" className="navbar-brand">React on Rails</Link>
           <ul className="nav navbar-nav main-nav">

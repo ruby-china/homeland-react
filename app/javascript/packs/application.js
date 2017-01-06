@@ -6,7 +6,6 @@ import { App, Home, TopicList, TopicDetail, SignUp } from 'containers'
 
 window.Homeland = {
   fetch(path, opts) {
-    console.log(opts);
     return $.get("https://ruby-china.org/api/v3" + path, opts);
   }
 };

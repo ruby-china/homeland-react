@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Reply } from 'components'
+import { Reply, NodeLink, PageLoading } from 'components'
 
 export class TopicDetail extends React.Component {
   constructor(props){
     super(props);
-    console.log(this.props.topic);
     this.state = {
-      topic: this.props.topic,
+      topic: null,
+      replies: [],
+      user_liked_reply_ids: [],
     };
   }
 
@@ -21,24 +22,32 @@ export class TopicDetail extends React.Component {
         topic: res.topic,
       });
     });
+    Homeland.fetch("/topics/" + this.props.params.id + "/replies.json").then(res => {
+      this.setState({
+        replies: res.replies,
+        user_liked_reply_ids: res.meta.user_liked_reply_ids,
+      });
+    });
   }
 
   render() {
     const topic = this.state.topic;
-    if (!topic) { return this.loading(); }
+    if (!topic) { return <PageLoading text="载入中..." />; }
+
     return (
-      <div className="topic-detail">
-        <h1>{topic.title}</h1>
-        <div className="topic-content">
-          <Reply reply={topic} type="topic" />
+      <div className="topic-detail row">
+        <div className="col-sm-12 col-md-9">
+          <h1><NodeLink node={topic} /> {topic.title}</h1>
+          <div className="topic-content">
+            <Reply key="reply-topic" reply={topic} type="topic" />
+          </div>
+          <div className="replies">
+            {this.state.replies.map(reply => {
+              return <Reply key={`reply-${reply.id}`} reply={reply} type="reply" />
+            })}
+          </div>
         </div>
       </div>
-    )
-  }
-
-  loading() {
-    return (
-      <div>Loading</div>
     )
   }
 }
