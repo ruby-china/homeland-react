@@ -6,6 +6,7 @@ import { App, Home, TopicList, TopicDetail, SignUp } from 'containers'
 
 window.Homeland = {
   fetch(path, opts) {
+    console.log(opts);
     return $.get("https://ruby-china.org/api/v3" + path, opts);
   }
 };
@@ -14,10 +15,9 @@ var routes =
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
-      <Route path="topics" component={TopicList}>
-        <Route path=":id" component={TopicDetail} />
-      </Route>
-      <Route path="/sign_up" component={SignUp} />
+      <Route path="topics" component={TopicList} />
+      <Route path="topics/recent" component={() => (<TopicList type="recent" />)} />
+      <Route path="topics/:id" component={TopicDetail} />
     </Route>
   </Router>
 

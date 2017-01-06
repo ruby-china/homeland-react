@@ -7,6 +7,7 @@ export class TopicList extends Component {
   constructor(props){
     super(props);
     this.state = {
+      type: this.props.type || 'last_actived',
       topics: [],
     };
   }
@@ -22,7 +23,7 @@ export class TopicList extends Component {
   }
 
   fetchData() {
-    Homeland.fetch("/topics.json").done(res => {
+    Homeland.fetch("/topics.json", { type: this.state.type }).done(res => {
       this.setState({
         topics: res.topics
       });

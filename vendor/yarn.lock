@@ -2420,6 +2420,16 @@ tar@~2.2.1:
     fstream "^1.0.2"
     inherits "2"
 
+timeago-react:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/timeago-react/-/timeago-react-1.0.7.tgz#a740a5d0dcdf0d7d53d1bae541eb2234f6b6476f"
+  dependencies:
+    timeago.js "^2.0.2"
+
+timeago.js@^2.0.2:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/timeago.js/-/timeago.js-2.0.4.tgz#11ee47196916f8e3687c497eb76cdfbeec6d7162"
+
 timers-browserify@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-2.0.2.tgz#ab4883cf597dcd50af211349a00fbca56ac86b86"
