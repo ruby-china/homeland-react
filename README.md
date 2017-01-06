@@ -5,6 +5,8 @@ This is an example of using React in Rails application and use [webpacker](https
 
 ## Try
 
+Online Demo: https://react-homeland.herokuapp.com/
+
 ```bash
 git clone git@github.com:huacnlee/react-rails-example.git
 cd react-rails-example
