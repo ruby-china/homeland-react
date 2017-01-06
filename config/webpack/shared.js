@@ -51,11 +51,15 @@ module.exports = {
     extensions: [ '.js', '.coffee' ],
     modules: [
       path.resolve('../app/javascript'),
+      path.resolve('../node_modules'),
       path.resolve('../vendor/node_modules')
     ]
   },
 
   resolveLoader: {
-    modules: [ path.resolve('../vendor/node_modules') ]
+    modules: [
+      path.resolve('../node_modules'),
+      path.resolve('../vendor/node_modules'),
+    ]
   }
 }
