@@ -10,6 +10,7 @@ git clone git@github.com:huacnlee/react-rails-example.git
 cd react-rails-example
 bundle install
 rails db:create
+./bin/yarn install
 foreman start
 ```
 
