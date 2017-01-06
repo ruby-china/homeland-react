@@ -3,12 +3,12 @@
   <head>
     <title>ReactRailsExample</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
 
   <body>
     <%= yield %>
   </body>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'vendor' %>
+  <%= javascript_pack_tag 'application' %>
 </html>

@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.12.2",
+    "path-complete-extname": "^0.1.0",
+    "rails-erb-loader": "^3.2.0",
+    "webpack": "beta",
+    "webpack-merge": "^2.2.0"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-router": "^3.0.0",
+    "react-timeago": "^3.1.3"
+  }
+}

@@ -38,3 +38,7 @@ chromedriver.log
 spec/examples.txt
 .vagrant
 .byebug_history
+
+# Ignore files compiled by webpacker.
+public/packs/*
+/vendor/node_modules/*
