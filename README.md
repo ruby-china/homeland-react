@@ -1,24 +1,22 @@
-# README
+React Rails Example
+-------------------
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an example of using React in Rails application.
 
-Things you may want to cover:
+- CoffeeScript + JSX
+- react-rails
+- react_ujs
+- jquery for fetch ajax data.
+- Bootstrap
 
-* Ruby version
+## Try
 
-* System dependencies
+```bash
+git clone git@github.com:huacnlee/react-rails-example.git
+cd react-rails-example
+bundle install
+rails db:create
+rails s
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+and the open http://localhost:3000
