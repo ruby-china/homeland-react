@@ -11,9 +11,5 @@ WEBPACK_BIN    = "./node_modules/webpack/bin/webpack.js"
 WEBPACK_CONFIG = "#{APP_PATH}/config/webpack/#{WEBPACK_ENV}.js"
 
 Dir.chdir(VENDOR_PATH) do
-  if RAILS_ENV == 'development'
-    exec "#{SET_NODE_PATH} #{WEBPACK_BIN} --config #{WEBPACK_CONFIG} #{ARGV.join(" ")}"
-  else
-    exec "webpack --config #{WEBPACK_CONFIG} #{ARGV.join(" ")}"
-  end
+  exec "#{SET_NODE_PATH} #{WEBPACK_BIN} --config #{WEBPACK_CONFIG} #{ARGV.join(" ")}"
 end
