@@ -1,7 +1,6 @@
-Router = ReactRouter.Router
-Route = ReactRouter.Route
-IndexRoute = ReactRouter.IndexRoute
-Link = ReactRouter.Link
+Router         = ReactRouter.Router
+Route          = ReactRouter.Route
+IndexRoute     = ReactRouter.IndexRoute
 browserHistory = ReactRouter.browserHistory
 
 routes =
