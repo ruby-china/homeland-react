@@ -7,7 +7,9 @@ routes =
   `<Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
-      <Route path="/list" component={List} />
+      <Route path="topics" component={TopicList}>
+        <Route path=":id" component={TopicDetail} />
+      </Route>
       <Route path="/sign_up" component={SignUp} />
     </Route>
   </Router>`
