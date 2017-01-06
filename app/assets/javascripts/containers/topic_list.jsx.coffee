@@ -18,11 +18,21 @@ fetch = Homeland.fetch;
 
   render: ->
     `<div className="topics">
-      <div className="title">Total {this.state.topics.length} items</div>
-      <div className="items">
+      <table className="table">
+        <thead className="thead-default">
+          <tr className="topic">
+            <th className="title">Subject</th>
+            <th className="node">Channel</th>
+            <th className="author">Author</th>
+            <th className="replies">Replies</th>
+            <th className="activity">Activity</th>
+          </tr>
+        </thead>
+        <tbody>
         {this.state.topics.map(topic => {
           return <Topic key={topic.id} topic={topic} />
         })}
-      </div>
+        </tbody>
+      </table>
     </div>
     `
