@@ -7,7 +7,7 @@ export class TopicList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      type: this.props.route ? this.props.route.type : 'last_actived',
+      type: this.props.type || 'last_actived',
       topics: [],
     };
   }
@@ -19,6 +19,7 @@ export class TopicList extends Component {
   componentWillUnmount() {
     this.setState({
       topics: [],
+      type: null,
     });
   }
 
@@ -61,6 +62,38 @@ export class TopicList extends Component {
           </tbody>
         </table>
       </div>
+    )
+  }
+}
+
+export class PopularTopicList extends Component {
+  render() {
+    return (
+      <TopicList type="popular" />
+    )
+  }
+}
+
+export class NoReplyTopicList extends Component {
+  render() {
+    return (
+      <TopicList type="no_reply" />
+    )
+  }
+}
+
+export class RecentTopicList extends TopicList {
+  render() {
+    return (
+      <TopicList type="recent" />
+    )
+  }
+}
+
+export class NodeTopicList extends Component {
+  render() {
+    return (
+      <TopicList type="node" />
     )
   }
 }
