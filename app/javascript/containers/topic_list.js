@@ -31,7 +31,7 @@ export class TopicList extends Component {
     } else {
       opts = { type: this.state.type };
       if (this.state.type == 'node') {
-        opts = { type: 'last_actived', node_id: this.props.params.id };
+        opts = { type: 'last_actived', node_id: this.props.node_id };
       }
     }
 
@@ -43,6 +43,10 @@ export class TopicList extends Component {
   }
 
   render() {
+    let list = this.loading();
+    if (this.state.topics.length > 0) {
+      list = this.renderTopics();
+    }
     return (
       <div className="topics">
         <table className="table">
@@ -56,13 +60,27 @@ export class TopicList extends Component {
             </tr>
           </thead>
           <tbody>
-          {this.state.topics.map(topic => {
-            return <Topic key={topic.id} topic={topic} />
-          })}
+          {list}
           </tbody>
         </table>
       </div>
     )
+  }
+
+  loading() {
+    return (
+      <tr className="topic topic-loading">
+        <td colSpan="4" className="text-center">
+          <div>载入中，请稍后...</div>
+        </td>
+      </tr>
+    )
+  }
+
+  renderTopics() {
+    return this.state.topics.map(topic => {
+      return <Topic key={topic.id} topic={topic} />
+    })
   }
 }
 
@@ -93,7 +111,7 @@ export class RecentTopicList extends TopicList {
 export class NodeTopicList extends Component {
   render() {
     return (
-      <TopicList type="node" />
+      <TopicList type="node" node_id={this.props.params.id} />
     )
   }
 }
