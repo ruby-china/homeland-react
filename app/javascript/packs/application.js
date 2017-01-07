@@ -14,8 +14,10 @@ var routes =
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
-      <Route path="topics" component={TopicList} />
-      <Route path="topics/recent" component={() => (<TopicList type="recent" />)} />
+      <Route path="topics" component={TopicList}>
+        <Route path="recent" type="recent" component={TopicList} />
+      </Route>
+      <Route path="topics/node:id" type="node" component={TopicList} />
       <Route path="topics/:id" component={TopicDetail} />
     </Route>
   </Router>

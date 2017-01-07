@@ -29,10 +29,8 @@ body {
         color: #666;
         padding-left: 10px;
         padding-right: 10px;
-      }
 
-      &.active {
-        a.nav-link {
+        &.active {
           background: #e45735;
           color: #FFF;
         }

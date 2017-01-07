@@ -7,7 +7,7 @@ export class TopicList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      type: this.props.type || 'last_actived',
+      type: this.props.route ? this.props.route.type : 'last_actived',
       topics: [],
     };
   }
@@ -23,7 +23,11 @@ export class TopicList extends Component {
   }
 
   fetchData() {
-    Homeland.fetch("/topics.json", { type: this.state.type }).done(res => {
+    let opts = { type: this.state.type };
+    if (this.state.type == 'node') {
+      opts = { type: 'last_actived', node_id: this.props.params.id };
+    }
+    Homeland.fetch("/topics.json", opts).done(res => {
       this.setState({
         topics: res.topics
       });
