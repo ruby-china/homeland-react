@@ -23,11 +23,18 @@ export class TopicList extends Component {
   }
 
   fetchData() {
-    let opts = { type: this.state.type };
-    if (this.state.type == 'node') {
-      opts = { type: 'last_actived', node_id: this.props.params.id };
+    let path = "/topics.json";
+    let opts = {};
+    if (this.props.type == 'user') {
+      path = `/users/${this.props.login}/topics.json`;
+    } else {
+      opts = { type: this.state.type };
+      if (this.state.type == 'node') {
+        opts = { type: 'last_actived', node_id: this.props.params.id };
+      }
     }
-    Homeland.fetch("/topics.json", opts).done(res => {
+
+    Homeland.fetch(path, opts).done(res => {
       this.setState({
         topics: res.topics
       });

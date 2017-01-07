@@ -2,7 +2,7 @@ import $ from 'jquery'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
-import { App, Home, TopicList, TopicDetail, SignUp } from 'containers'
+import { App, Home, TopicList, TopicDetail, SignUp, User } from 'containers'
 
 window.Homeland = {
   fetch(path, opts) {
@@ -19,6 +19,7 @@ var routes =
       </Route>
       <Route path="topics/node:id" type="node" component={TopicList} />
       <Route path="topics/:id" component={TopicDetail} />
+      <Route path=":id" component={User} />
     </Route>
   </Router>
 

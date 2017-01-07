@@ -8,6 +8,14 @@ body {
   padding-top: 55px;
 }
 
+.text-center { text-align: center; }
+.justify-content-center {
+  -webkit-box-pack: center!important;
+  -webkit-justify-content: center!important;
+  -ms-flex-pack: center!important;
+  justify-content: center!important;
+}
+
 .main-layout {
   margin-top: 30px;
 }
@@ -152,5 +160,18 @@ body {
         .timeago { font-size: 12px; }
       }
     }
+  }
+}
+
+
+.user-profile {
+  .user-info {
+    .avatar {
+      margin: 10px auto;
+    }
+  }
+
+  .nav-pills {
+    margin-bottom: 15px;
   }
 }
