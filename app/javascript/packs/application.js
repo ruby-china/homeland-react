@@ -3,7 +3,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { App, Home, TopicDetail, SignUp, User } from 'containers';
-import { TopicList, NoReplyTopicList, PopularTopicList, RecentTopicList, NodeTopicList } from 'containers';
+import {
+  TopicList,
+  NoReplyTopicList,
+  PopularTopicList,
+  RecentTopicList,
+  NodeTopicList,
+  FavoriteTopicList
+} from 'containers';
 
 window.Homeland = {
   fetch(path, opts) {
@@ -21,7 +28,9 @@ var routes =
       <Route path="topics/recent" component={RecentTopicList} />
       <Route path="topics/node:id" component={NodeTopicList} />
       <Route path="topics/:id" component={TopicDetail} />
-      <Route path=":id" component={User} />
+      <Route path=":id" component={User}>
+        <Route path="favorites" component={FavoriteTopicList} />
+      </Route>
     </Route>
   </Router>
 

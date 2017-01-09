@@ -11,14 +11,6 @@ body {
   padding-top: 50px;
 }
 
-.text-center { text-align: center; }
-.justify-content-center {
-  -webkit-box-pack: center!important;
-  -webkit-justify-content: center!important;
-  -ms-flex-pack: center!important;
-  justify-content: center!important;
-}
-
 #footer {
   border-top: 1px solid #ddd;
   background: #f0f0f0;
@@ -188,12 +180,24 @@ time { border-bottom: 1px dashed #eee; color: #666; font-size: 12px; }
 
 .user-profile {
   .user-info {
+    margin-bottom: 15px;
     .avatar {
       margin: 10px auto;
+    }
+
+    .card-footer {
+      a { margin: 0 5px; }
     }
   }
 
   .nav-pills {
     margin-bottom: 15px;
+
+    .count {
+      font-size: 12px; color: #999; margin-left: 3px;
+    }
+    .active {
+      .count { color: darken(#fff, 10%); }
+    }
   }
 }

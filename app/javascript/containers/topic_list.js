@@ -28,6 +28,8 @@ export class TopicList extends Component {
     let opts = {};
     if (this.props.type == 'user') {
       path = `/users/${this.props.login}/topics.json`;
+    } else if (this.props.type == 'favorites') {
+      path = `/users/${this.props.login}/favorites.json`;
     } else {
       opts = { type: this.state.type };
       if (this.state.type == 'node') {
@@ -111,6 +113,14 @@ export class NodeTopicList extends Component {
   render() {
     return (
       <TopicList type="node" node_id={this.props.params.id} />
+    )
+  }
+}
+
+export class FavoriteTopicList extends Component {
+  render() {
+    return (
+      <TopicList type="favorites" login={this.props.params.id} />
     )
   }
 }
