@@ -7,7 +7,10 @@ export class Footer extends Component {
     return (
       <div id="footer">
         <div className="container">
-          Copyright &copy; React Rails Exmaple.
+          <p>This is a React App Exmaple powered by Rails + Webpacker.</p>
+          <p>
+          <a href="https://github.com/huacnlee/react-rails-example">OpenSource Code</a>
+          </p>
         </div>
       </div>
     )
