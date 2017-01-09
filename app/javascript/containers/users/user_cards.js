@@ -7,7 +7,7 @@ export class UserCards extends Component {
   constructor(props){
     super(props);
     this.state = {
-      users: []
+      users: null
     };
   }
 
@@ -36,7 +36,7 @@ export class UserCards extends Component {
 
   render() {
     let list = this.loading();
-    if (this.state.users.length > 0) {
+    if (this.state.users) {
       list = this.renderData();
     }
     return (

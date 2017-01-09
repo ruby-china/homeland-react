@@ -7,7 +7,7 @@ export class UserReplies extends Component {
   constructor(props){
     super(props);
     this.state = {
-      replies: []
+      replies: null
     };
   }
 
@@ -33,7 +33,7 @@ export class UserReplies extends Component {
 
   render() {
     let list = this.loading();
-    if (this.state.replies.length > 0) {
+    if (this.state.replies) {
       list = this.renderReplies();
     }
     return (
