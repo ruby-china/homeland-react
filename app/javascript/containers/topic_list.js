@@ -52,11 +52,10 @@ export class TopicList extends Component {
         <table className="table">
           <thead className="thead-default">
             <tr className="topic">
-              <th className="title">Subject</th>
-              <th className="node">Channel</th>
-              <th className="author">Author</th>
-              <th className="replies">Replies</th>
-              <th className="activity">Activity</th>
+              <th className="title">标题</th>
+              <th className="author">作者</th>
+              <th className="replies">回帖</th>
+              <th className="activity">更新</th>
             </tr>
           </thead>
           <tbody>

@@ -1,11 +1,14 @@
 /*
  *= require bootstrap-theme
+ *= require font-awesome
  *= require markdown
  *= require_self
  */
 
+@import "vars";
+
 body {
-  padding-top: 55px;
+  padding-top: 50px;
 }
 
 .text-center { text-align: center; }
@@ -14,6 +17,12 @@ body {
   -webkit-justify-content: center!important;
   -ms-flex-pack: center!important;
   justify-content: center!important;
+}
+
+#footer {
+  border-top: 1px solid #ddd;
+  background: #f0f0f0;
+  padding: 20px 0 60px 0;
 }
 
 .main-layout {
@@ -60,6 +69,14 @@ body {
   }
 }
 
+.topic-link {
+  .node { margin-right: 5px; color: #888; font-weight: normal; }
+  i.fa {
+    margin-left: 5px;
+    &.fa-diamond { color: $red; }
+  }
+}
+
 .topics {
   .topic {
     font-size: 13px;
@@ -67,12 +84,8 @@ body {
     td.title {
       font-size: 16px;
     }
-    .node {
-      width: 150px; font-weight: bold;
-      a { color: #444; display:inline-block;}
-    }
     .author {
-      width: 40px;
+      width: 70px;
       .avatar { width: 24px; height: 24px; }
     }
     .replies { width: 100px; }
@@ -91,8 +104,8 @@ body {
   }
 
   .reply {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
     border-bottom: 1px solid #eee;
 
     .media-left {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import { Link } from 'react-router';
-import { UserAvatarLink, Timeago, NodeLink } from 'components'
+import { UserAvatarLink, Timeago, NodeLink, TopicLink } from 'components'
 
 export class Topic extends Component {
   render() {
@@ -10,10 +10,7 @@ export class Topic extends Component {
     return (
       <tr className="topic" id={'topic-' + topic.id}>
         <td className="title">
-          <Link to={'/topics/' + topic.id}>{topic.title}</Link>
-        </td>
-        <td className="node">
-          <NodeLink node={topic} />
+          <TopicLink topic={topic} />
         </td>
         <td className="author">
           <UserAvatarLink user={topic.user} />

@@ -7,7 +7,7 @@ export class UserNameLink extends Component {
     const user = this.props.user;
 
     return (
-      <Link to={'/' + user.login} title="{user.name}" className="user-name">
+      <Link to={'/' + user.login} title={user.name} className="user-name">
       {user.login}
       </Link>
     )

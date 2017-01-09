@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'foreman'
 gem 'bootstrap', '4.0.0.alpha5'
+gem 'font-awesome-rails'
 gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
