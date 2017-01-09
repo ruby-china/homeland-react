@@ -2,8 +2,11 @@ import $ from 'jquery'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import { App, Home, TopicDetail, SignUp, User } from 'containers';
 import {
+  App,
+  Home,
+  User,
+  TopicDetail,
   TopicList,
   NoReplyTopicList,
   PopularTopicList,
@@ -11,7 +14,9 @@ import {
   NodeTopicList,
   UserTopicList,
   FavoriteTopicList,
-  UserReplyList,
+  UserReplies,
+  UserFollowers,
+  UserFollowing,
 } from 'containers';
 
 window.Homeland = {
@@ -32,8 +37,10 @@ var routes =
       <Route path="topics/:id" component={TopicDetail} />
       <Route path=":id" component={User}>
         <IndexRoute component={UserTopicList} />
-        <Route path="replies" component={UserReplyList} />
+        <Route path="replies" component={UserReplies} />
         <Route path="favorites" component={FavoriteTopicList} />
+        <Route path="followers" component={UserFollowers} />
+        <Route path="following" component={UserFollowing} />
       </Route>
     </Route>
   </Router>

@@ -7,7 +7,9 @@ export class PageLoading extends Component {
       <div className="row page-loading">
         <div className="col-md-6 offset-md-3">
           <div className="text text-center">{this.props.text || "载入中，请稍后..."}</div>
-          <progress className="progress progress-striped progress-animated" value="100" max="100" />
+          <div className="progress">
+            <div className="progress-bar progress-bar-striped progress-bar-animated" style={{width: '100%'}} />
+          </div>
         </div>
       </div>
     )

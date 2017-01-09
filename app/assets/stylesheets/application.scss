@@ -21,6 +21,11 @@ body {
   margin-top: 30px;
 }
 
+.data-loading {
+  padding: 50px 0;
+  text-align: center;
+}
+
 .node-badge {
   display: inline-block;
   width: 10px; height: 10px;
@@ -213,4 +218,9 @@ time { border-bottom: 1px dashed #eee; color: #666; font-size: 12px; }
       a { color: #999; }
     }
   }
+}
+
+.user-card {
+  min-height: 150px;
+  overflow: hidden;
 }

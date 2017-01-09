@@ -1,9 +1,9 @@
 import React from 'react';
 import { Component } from 'react';
 import { Link } from 'react-router';
-import { UserReply } from 'components'
+import { UserReply, PageLoading } from 'components'
 
-export class UserReplyList extends Component {
+export class UserReplies extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -45,9 +45,7 @@ export class UserReplyList extends Component {
 
   loading() {
     return (
-      <div className="reply reply-loading text-center">
-        载入中，请稍后...
-      </div>
+      <PageLoading />
     )
   }
 
