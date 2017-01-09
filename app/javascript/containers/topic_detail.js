@@ -35,17 +35,21 @@ export class TopicDetail extends React.Component {
     if (!topic) { return <PageLoading text="载入中..." />; }
 
     return (
-      <div className="topic-detail row">
-        <div className="col-sm-12 col-md-9">
-          <h1><NodeLink node={topic} /> {topic.title}</h1>
-          <div className="topic-content">
-            <Reply key="reply-topic" reply={topic} type="topic" />
+
+      <div className="topic-detail">
+        <h1><NodeLink node={topic} /> {topic.title}</h1>
+        <div className="row">
+          <div className="col">
+            <div className="topic-content">
+              <Reply key="reply-topic" reply={topic} type="topic" />
+            </div>
+            <div className="replies">
+              {this.state.replies.map(reply => {
+                return <Reply key={`reply-${reply.id}`} reply={reply} type="reply" />
+              })}
+            </div>
           </div>
-          <div className="replies">
-            {this.state.replies.map(reply => {
-              return <Reply key={`reply-${reply.id}`} reply={reply} type="reply" />
-            })}
-          </div>
+          <div className="col hidden-md-down col-lg-3"></div>
         </div>
       </div>
     )

@@ -16,7 +16,7 @@ export class UserCard extends Component {
           <div className="card-title">
             {user.login}
             {user.name && (
-              <span class="name">({user.name})</span>
+              <span className="name">({user.name})</span>
             )}
           </div>
           <Link className="btn btn-default" to="#">关注</Link>
