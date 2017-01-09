@@ -9,7 +9,9 @@ import {
   PopularTopicList,
   RecentTopicList,
   NodeTopicList,
-  FavoriteTopicList
+  UserTopicList,
+  FavoriteTopicList,
+  UserReplyList,
 } from 'containers';
 
 window.Homeland = {
@@ -29,6 +31,8 @@ var routes =
       <Route path="topics/node:id" component={NodeTopicList} />
       <Route path="topics/:id" component={TopicDetail} />
       <Route path=":id" component={User}>
+        <IndexRoute component={UserTopicList} />
+        <Route path="replies" component={UserReplyList} />
         <Route path="favorites" component={FavoriteTopicList} />
       </Route>
     </Route>

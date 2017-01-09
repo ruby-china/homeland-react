@@ -201,3 +201,16 @@ time { border-bottom: 1px dashed #eee; color: #666; font-size: 12px; }
     }
   }
 }
+
+.user-reply-list {
+  .user-reply {
+    border-top: 1px solid #ddd;
+    padding: 15px;
+
+    .media-heading {
+      margin-bottom: 10px;
+      font-size: 12px;
+      a { color: #999; }
+    }
+  }
+}

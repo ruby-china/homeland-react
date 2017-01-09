@@ -8,7 +8,7 @@ export class TopicList extends Component {
     super(props);
     this.state = {
       type: this.props.type || 'last_actived',
-      topics: [],
+      topics: null,
     };
   }
 
@@ -46,7 +46,7 @@ export class TopicList extends Component {
 
   render() {
     let list = this.loading();
-    if (this.state.topics.length > 0) {
+    if (this.state.topics) {
       list = this.renderTopics();
     }
     return (
@@ -79,6 +79,16 @@ export class TopicList extends Component {
   }
 
   renderTopics() {
+    if (this.state.topics.length === 0) {
+      return (
+        <tr className="topic topic-empty">
+          <td colSpan="4" className="text-center">
+            <div>没有任何话题</div>
+          </td>
+        </tr>
+      )
+    }
+
     return this.state.topics.map(topic => {
       return <Topic key={topic.id} topic={topic} />
     })
@@ -113,6 +123,14 @@ export class NodeTopicList extends Component {
   render() {
     return (
       <TopicList type="node" node_id={this.props.params.id} />
+    )
+  }
+}
+
+export class UserTopicList extends Component {
+  render() {
+    return (
+      <TopicList type="user" login={this.props.params.id} />
     )
   }
 }

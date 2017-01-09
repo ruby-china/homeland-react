@@ -63,9 +63,7 @@ export class User extends React.Component {
             </li>
           </ul>
         </div>
-        {this.props.children || (
-          <TopicList type="user" login={user.login} />
-        )}
+        {this.props.children}
       </div>
     )
   }
