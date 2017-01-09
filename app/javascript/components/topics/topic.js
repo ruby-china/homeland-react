@@ -12,11 +12,16 @@ export class Topic extends Component {
         <td className="title">
           <TopicLink topic={topic} />
         </td>
-        <td className="author">
+        <td className="author hidden-xs-down">
           <UserAvatarLink user={topic.user} />
         </td>
-        <td className="replies">{topic.replies_count}</td>
-        <td className="activity">
+        <td className="replies hidden-md-down">
+          <span><i className="fa fa-comments"></i> {topic.replies_count}</span>
+          {topic.likes_count && (
+            <span className="likes"><i className="fa fa-heart"></i> {topic.likes_count}</span>
+          )}
+        </td>
+        <td className="activity hidden-md-down">
           <Timeago time={topic.updated_at} />
         </td>
       </tr>

@@ -53,9 +53,9 @@ export class TopicList extends Component {
           <thead className="thead-default">
             <tr className="topic">
               <th className="title">标题</th>
-              <th className="author">作者</th>
-              <th className="replies">回帖</th>
-              <th className="activity">更新</th>
+              <th className="author hidden-xs-down">作者</th>
+              <th className="replies hidden-md-down">回帖/赞</th>
+              <th className="activity hidden-md-down">更新</th>
             </tr>
           </thead>
           <tbody>

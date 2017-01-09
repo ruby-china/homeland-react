@@ -40,7 +40,7 @@ body {
   border-radius: 180px;
 }
 
-.timeago { color: #999; text-decoration: none; }
+time { border-bottom: 1px dashed #eee; color: #666; font-size: 12px; }
 
 .btn-opt {
   line-height: 100%;
@@ -88,8 +88,15 @@ body {
       width: 70px;
       .avatar { width: 24px; height: 24px; }
     }
-    .replies { width: 100px; }
-    .activity { width: 80px; }
+    .replies {
+      min-width: 100px;
+      span { margin-right: 10px; }
+      i.fa { color: lighten($black, 60%); }
+      i.fa-heart { color: lighten($red, 20%); }
+    }
+    .activity {
+      width: 80px;
+    }
   }
 }
 
@@ -113,9 +120,11 @@ body {
     }
 
     .media-heading {
-      font-size: 14px;
+      font-size: 13px;
+      margin-bottom: 8px;
 
-      .date { color: #999; font-size: 13px; }
+      .user-name { color: #666; font-weight: bold; }
+      .date { margin-left: 5px; }
     }
 
     .reply-to {
