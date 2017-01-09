@@ -12,11 +12,17 @@ export class User extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchData();
+    this.fetchData(this.props.params.id);
   }
 
-  fetchData() {
-    Homeland.fetch("/users/"+ this.props.params.id +".json").then(res => {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.params !== nextProps.params) {
+      this.fetchData(nextProps.params.id);
+    }
+  }
+
+  fetchData(id) {
+    Homeland.fetch("/users/"+ id +".json").then(res => {
       this.setState({
         user: res.user,
       });
