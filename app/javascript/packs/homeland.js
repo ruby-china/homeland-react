@@ -21,13 +21,18 @@ import {
 
 window.Homeland = {
   fetch(path, opts) {
+    return Homeland.request('GET', path, null, opts);
+  },
+
+  request(method, path, data, opts) {
     let headers = {};
     if (window.currentUser) {
       headers['AUTHORIZATION'] = 'Bearer ' + window.currentUser.accessToken;
     }
     return $.ajax({
+      method: method,
       url: "https://ruby-china.org/api/v3" + path,
-      data: opts,
+      data: data,
       headers: headers
     });
   }

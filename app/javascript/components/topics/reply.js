@@ -5,24 +5,25 @@ import { UserAvatarLink, UserNameLink, Timeago, LikeButton, IconButton } from 'c
 
 export class Reply extends Component {
   render() {
-    var reply = this.props.reply;
+    var item = this.props.item;
+    var type = this.props.type;
 
     return (
-      <div className="reply media">
+      <div className="reply reply-{type} media">
         <div className="d-flex align-self-start mr-3">
-          <UserAvatarLink user={reply.user} />
+          <UserAvatarLink user={item.user} />
         </div>
         <div className="media-body">
           <div className="mt-0 media-heading">
-            <UserNameLink user={reply.user} />
+            <UserNameLink user={item.user} />
             <span className="date float-xs-right">
-              <Timeago time={reply.created_at} />
+              <Timeago time={item.created_at} />
             </span>
             <span className="float-right">
-              <LikeButton reply={reply} state={this.props.state} />
+              <LikeButton item={item} type={type} state={this.props.state} />
             </span>
           </div>
-          <div className="markdown" dangerouslySetInnerHTML={{ __html: reply.body_html }} />
+          <div className="markdown" dangerouslySetInnerHTML={{ __html: item.body_html }} />
           <div className="media-footer clearfix">
           </div>
         </div>

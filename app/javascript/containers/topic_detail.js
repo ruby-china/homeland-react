@@ -43,12 +43,12 @@ export class TopicDetail extends React.Component {
         <div className="row">
           <div className="col">
             <div className="topic-content">
-              <Reply key="reply-topic" reply={topic} type="topic" state={this.state.meta.liked} />
+              <Reply key="reply-topic" item={topic} type="topic" state={this.state.meta.liked} />
             </div>
             <div className="replies">
               {this.state.replies.map(reply => {
                 const liked = this.state.user_liked_reply_ids.indexOf(reply.id) !== -1;
-                return <Reply key={`reply-${reply.id}`} reply={reply} type="reply" state={liked} />
+                return <Reply key={`reply-${reply.id}`} item={reply} type="reply" state={liked} />
               })}
             </div>
           </div>
