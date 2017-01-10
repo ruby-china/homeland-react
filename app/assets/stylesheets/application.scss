@@ -152,6 +152,15 @@ time { border-bottom: 1px dashed #eee; color: #666; font-size: 12px; }
       }
     }
     .media-footer {
+      margin: 15px -8px 0px -8px;
+      .btn-icon {
+        margin-right: 6px;
+        font-size: 14px;
+      }
+
+      .opts {
+        .btn-icon { margin-left: 6px; margin-right: 0; }
+      }
     }
   }
 }

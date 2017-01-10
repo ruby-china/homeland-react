@@ -9,13 +9,13 @@ export class IconButton extends Component {
   }
 
   render() {
-    let href = this.props.href || '#';
+    let to = this.props.to || '#';
     let className = this.props.className || '';
     let icon = this.props.icon || '';
     let label = this.props.label || '';
 
     return (
-      <Link href={href} className={`btn btn-icon ${className}`} onClick={this.onClick.bind(this)}>
+      <Link to={to} className={`btn btn-icon ${className}`} onClick={this.onClick.bind(this)}>
         <i className={`fa fa-${icon}`}></i> {label}
       </Link>
     )

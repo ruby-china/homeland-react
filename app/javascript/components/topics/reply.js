@@ -4,9 +4,22 @@ import { Link } from 'react-router';
 import { UserAvatarLink, UserNameLink, Timeago, LikeButton, IconButton } from 'components'
 
 export class Reply extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      showMore: false
+    };
+  }
+
+  toggleMore() {
+    this.setState({ showMore: true });
+  }
+
   render() {
     var item = this.props.item;
     var type = this.props.type;
+
+    const moreButtons = this.renderMoreButtons();
 
     return (
       <div className="reply reply-{type} media">
@@ -19,15 +32,37 @@ export class Reply extends Component {
             <span className="date float-xs-right">
               <Timeago time={item.created_at} />
             </span>
-            <span className="float-right">
-              <LikeButton item={item} type={type} state={this.props.state} />
-            </span>
           </div>
           <div className="markdown" dangerouslySetInnerHTML={{ __html: item.body_html }} />
           <div className="media-footer clearfix">
+            <LikeButton item={item} type={type} state={this.props.state} />
+
+            <span className="float-right opts">
+              {moreButtons}
+              <IconButton icon="reply" />
+            </span>
           </div>
         </div>
       </div>
     )
+  }
+
+  renderMoreButtons() {
+    const item = this.props.item;
+
+    if (this.state.showMore) {
+      return (
+        <span>
+        {item.abilities.destroy && (
+          <IconButton icon="trash" />
+        )}
+        {item.abilities.update && (
+          <IconButton icon="pencil" />
+        )}
+        </span>
+      )
+    } else {
+      return (<IconButton icon="ellipsis-h" onClick={this.toggleMore.bind(this)} />)
+    }
   }
 }
