@@ -17,7 +17,7 @@ export class Topic extends Component {
         </td>
         <td className="replies hidden-md-down">
           <span><i className="fa fa-comments"></i> {topic.replies_count}</span>
-          {topic.likes_count && (
+          {topic.likes_count > 0 && (
             <span className="likes"><i className="fa fa-heart"></i> {topic.likes_count}</span>
           )}
         </td>

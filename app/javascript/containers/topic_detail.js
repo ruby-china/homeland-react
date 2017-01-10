@@ -7,6 +7,7 @@ export class TopicDetail extends React.Component {
     super(props);
     this.state = {
       topic: null,
+      meta: {},
       replies: [],
       user_liked_reply_ids: [],
     };
@@ -20,6 +21,7 @@ export class TopicDetail extends React.Component {
     Homeland.fetch("/topics/"+ this.props.params.id +".json").then(res => {
       this.setState({
         topic: res.topic,
+        meta: res.meta,
       });
     });
     Homeland.fetch("/topics/" + this.props.params.id + "/replies.json").then(res => {
@@ -41,11 +43,12 @@ export class TopicDetail extends React.Component {
         <div className="row">
           <div className="col">
             <div className="topic-content">
-              <Reply key="reply-topic" reply={topic} type="topic" />
+              <Reply key="reply-topic" reply={topic} type="topic" state={this.state.meta.liked} />
             </div>
             <div className="replies">
               {this.state.replies.map(reply => {
-                return <Reply key={`reply-${reply.id}`} reply={reply} type="reply" />
+                const liked = this.state.user_liked_reply_ids.indexOf(reply.id) !== -1;
+                return <Reply key={`reply-${reply.id}`} reply={reply} type="reply" state={liked} />
               })}
             </div>
           </div>

@@ -89,6 +89,7 @@ body {
   font-size: 13px;
   color: #999;
   &:hover { background: #f0f0f0; }
+  &.active { color: $red; }
 }
 
 .form-control {

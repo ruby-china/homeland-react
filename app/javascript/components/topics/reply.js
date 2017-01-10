@@ -19,7 +19,7 @@ export class Reply extends Component {
               <Timeago time={reply.created_at} />
             </span>
             <span className="float-right">
-              <LikeButton reply={reply} />
+              <LikeButton reply={reply} state={this.props.state} />
             </span>
           </div>
           <div className="markdown" dangerouslySetInnerHTML={{ __html: reply.body_html }} />
