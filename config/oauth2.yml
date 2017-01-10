@@ -1,0 +1,15 @@
+default: &default
+  site: https://ruby-china.org
+  client_id: 'bcffd88d'
+  secret: 'b612c4edbef65420bb6ce2fc017ec277018b68ff1cfa1e46199d3a30c60500ab'
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+  client_id: <%= ENV['OAUTH_CLIENT_ID'] %>
+  secret: <%= ENV['OAUTH_SECRET'] %>

@@ -17,6 +17,18 @@ body {
   padding: 20px 0 60px 0;
 }
 
+.navbar-brand {
+  font-weight: bold;
+  color: #666 !important;
+  b { color: $red !important; }
+
+  sup { font-size: 11px; color: #999; font-weight: normal; }
+}
+
+.navbar {
+  .avatar { width: 20px; height: 20px; }
+}
+
 .main-layout {
   margin-top: 30px;
 }
@@ -36,6 +48,10 @@ body {
   width: 48px; height: 48px;
   border-radius: 180px;
 }
+
+.avatar-xs { width: 16px; height: 16px; border-radius: 120px; }
+.avatar-sm { width: 32px; height: 32px; border-radius: 120px; }
+.avatar-md { width: 48px; height: 48px; border-radius: 120px; }
 
 time { border-bottom: 1px dashed #eee; color: #666; font-size: 12px; }
 

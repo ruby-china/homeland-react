@@ -21,7 +21,15 @@ import {
 
 window.Homeland = {
   fetch(path, opts) {
-    return $.get("https://ruby-china.org/api/v3" + path, opts);
+    let headers = {};
+    if (window.currentUser) {
+      headers['AUTHORIZATION'] = 'Bearer ' + window.currentUser.accessToken;
+    }
+    return $.ajax({
+      url: "https://ruby-china.org/api/v3" + path,
+      data: opts,
+      headers: headers
+    });
   }
 };
 

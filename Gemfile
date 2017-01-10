@@ -19,6 +19,9 @@ gem 'bootstrap', '4.0.0.alpha6'
 gem 'font-awesome-rails'
 gem 'webpacker', github: 'rails/webpacker'
 
+gem 'oauth2'
+gem 'faraday'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
