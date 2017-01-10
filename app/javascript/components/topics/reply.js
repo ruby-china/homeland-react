@@ -22,11 +22,13 @@ export class Reply extends Component {
   render() {
     var item = this.props.item;
     var type = this.props.type;
+    var lightClass = this.props.highlight ? 'light' : '';
+    var popularClass = item.likes_count >= 5 && type === 'reply' ? 'popular' : '';
 
     const moreButtons = this.renderMoreButtons();
 
     return (
-      <div className="reply reply-{type} media">
+      <div className={`reply reply-${type} ${lightClass} ${popularClass} media`}>
         <div className="d-flex align-self-start mr-3">
           <UserAvatarLink user={item.user} />
         </div>

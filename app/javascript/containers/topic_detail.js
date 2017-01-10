@@ -11,6 +11,8 @@ export class TopicDetail extends React.Component {
       replies: [],
       user_liked_reply_ids: [],
       showReplyPanel: false,
+      highlightTopicId: null,
+      form: {},
     };
   }
 
@@ -35,6 +37,9 @@ export class TopicDetail extends React.Component {
 
   onReplyClick() {
     this.setState({ showReplyPanel: true });
+    setTimeout(() => {
+      this.refs.reply_body.focus();
+    }, 100)
   }
 
   render() {
@@ -52,15 +57,14 @@ export class TopicDetail extends React.Component {
             <div className="replies">
               {this.state.replies.map(reply => {
                 const liked = this.state.user_liked_reply_ids.indexOf(reply.id) !== -1;
-                return <Reply key={`reply-${reply.id}`} item={reply} type="reply" state={liked} onReplyClick={this.onReplyClick.bind(this)} />
+                const highlight = this.state.highlightTopicId == reply.id;
+                return <Reply key={`reply-${reply.id}`} item={reply} type="reply" highlight={highlight} state={liked} onReplyClick={this.onReplyClick.bind(this)} />
               })}
             </div>
           </div>
           <div className="col hidden-md-down col-lg-3"></div>
         </div>
-        {this.state.showReplyPanel && (
-          this.renderReplyPanel()
-        )}
+        {this.renderReplyPanel()}
       </div>
     )
   }
@@ -70,33 +74,41 @@ export class TopicDetail extends React.Component {
     this.setState({ showReplyPanel: false });
   }
 
-  replyBodyOnChange(e) {
-    this.setState({ reply_body: e.target.value });
-  }
-
   submitReply(e) {
     const data = {
-      body: this.state.reply_body,
+      body: this.refs.reply_body.value,
     };
     const path = `/topics/${this.state.topic.id}/replies`;
     Homeland.request('POST', path, data).then(res => {
       this.state.replies.push(res.reply);
+      this.highlightTopic(res.reply.id)
       this.closeReplyPanel();
     })
   }
 
+  highlightTopic(id) {
+    clearTimeout(this.highlightTopicTimer);
+    this.setState({ highlightTopicId: id });
+    this.highlightTopicTimer = setTimeout(() => {
+      this.setState({ highlightTopicId: null });
+    }, 5000);
+  }
+
   renderReplyPanel() {
+    const hide = this.state.showReplyPanel ? '' : 'hide';
     return (
-      <div className="reply-panel">
+      <div className={`reply-panel ${hide}`}>
         <div className="container">
           <div className="row">
             <div className="col">
               <div className="form-group">
-                <textarea name="body" className="form-control" onChange={this.replyBodyOnChange.bind(this)} rows="5"></textarea>
+                <textarea name="body" className="form-control"
+                  ref='reply_body'
+                  rows="5"></textarea>
               </div>
-              <div className="form-group">
+              <div className="form-buttons">
                 <button className="btn btn-primary" onClick={this.submitReply.bind(this)}>提交回复</button>
-                <a href="#" onClick={this.closeReplyPanel.bind(this)}>取消</a>
+                <button className="btn btn-default" onClick={this.closeReplyPanel.bind(this)}>取消</button>
               </div>
             </div>
             <div className="col hidden-md-down col-lg-3">

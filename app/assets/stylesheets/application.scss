@@ -55,6 +55,12 @@ body {
 
 time { border-bottom: 1px dashed #eee; color: #666; font-size: 12px; }
 
+.hide { display: none; }
+
+.form-buttons {
+  .btn { margin-right: 8px; }
+}
+
 .btn-opt {
   line-height: 100%;
   padding: 6px 8px 8px 8px;
@@ -124,9 +130,12 @@ time { border-bottom: 1px dashed #eee; color: #666; font-size: 12px; }
   }
 
   .reply {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
+    padding: 15px;
+    margin: 0 -15px;
     border-bottom: 1px solid #eee;
+
+    &.light { background:#F7F2FC; }
+    &.popular { background:#fffce9; }
 
     .media-left {
       .media-object { width: 48px; height: 48px; border-radius: 180px; }
