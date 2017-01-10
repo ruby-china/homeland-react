@@ -1,7 +1,8 @@
 import $ from 'jquery'
-global.jQuery = $
+global.jQuery = $;
 require('jquery-ujs');
 
+import 'whatwg-fetch';
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -32,11 +33,12 @@ window.Homeland = {
     if (window.currentUser) {
       headers['AUTHORIZATION'] = 'Bearer ' + window.currentUser.accessToken;
     }
-    return $.ajax({
+    return fetch("https://ruby-china.org/api/v3" + path, {
       method: method,
-      url: "https://ruby-china.org/api/v3" + path,
-      data: data,
+      body: data,
       headers: headers
+    }).then((res) => {
+      return res.json();
     });
   },
 

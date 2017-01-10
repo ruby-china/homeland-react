@@ -24,7 +24,7 @@ export class UserReplies extends Component {
   fetchData() {
     let path = `/users/${this.props.params.id}/replies.json`;
 
-    Homeland.fetch(path).done(res => {
+    Homeland.fetch(path).then(res => {
       this.setState({
         replies: res.replies
       });

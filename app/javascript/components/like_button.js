@@ -22,14 +22,14 @@ export class LikeButton extends Component {
     };
 
     if (this.state.active === false) {
-      Homeland.request('POST', '/likes', data).done((res) => {
+      Homeland.request('POST', '/likes', data).then((res) => {
         this.setState({
           count: res.count,
           active: true,
         });
       });
     } else {
-      Homeland.request('DELETE', '/likes', data).done((res) => {
+      Homeland.request('DELETE', '/likes', data).then((res) => {
         this.setState({
           active: false,
           count: res.count,

@@ -41,7 +41,7 @@ export class TopicList extends Component {
       opts = { type: 'last_actived', node_id: this.props.node_id };
     }
 
-    Homeland.fetch(path, opts).done(res => {
+    Homeland.fetch(path, opts).then(res => {
       this.setState({
         topics: res.topics
       });

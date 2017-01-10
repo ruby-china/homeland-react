@@ -20,7 +20,7 @@ export class App extends Component {
   }
 
   fetchNodes() {
-    Homeland.fetch("/nodes").done((res) => {
+    Homeland.fetch("/nodes").then((res) => {
       this.setState({ nodes: res.nodes });
     });
   }

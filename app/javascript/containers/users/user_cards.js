@@ -27,7 +27,7 @@ export class UserCards extends Component {
       path = `/users/${this.props.id}/following.json`;
     }
 
-    Homeland.fetch(path).done(res => {
+    Homeland.fetch(path).then(res => {
       this.setState({
         users: res.followers || res.following,
       });
