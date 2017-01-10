@@ -15,6 +15,10 @@ export class Reply extends Component {
     this.setState({ showMore: true });
   }
 
+  onReplyClick() {
+    return this.props.onReplyClick();
+  }
+
   render() {
     var item = this.props.item;
     var type = this.props.type;
@@ -39,7 +43,7 @@ export class Reply extends Component {
 
             <span className="float-right opts">
               {moreButtons}
-              <IconButton icon="reply" />
+              <IconButton icon="reply" onClick={this.onReplyClick.bind(this)} />
             </span>
           </div>
         </div>

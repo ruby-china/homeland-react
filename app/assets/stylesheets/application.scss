@@ -232,6 +232,17 @@ time { border-bottom: 1px dashed #eee; color: #666; font-size: 12px; }
   }
 }
 
+.reply-panel {
+  z-index: 999;
+  width: 100%;
+  background: #f0f0f0;
+  border-top: 1px solid #ddd;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
 .user-reply-list {
   .user-reply {
     border-top: 1px solid #ddd;
