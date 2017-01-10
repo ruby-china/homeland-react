@@ -5,6 +5,8 @@ class OauthsController < ApplicationController
   end
 
   def destroy
+    sign_out
+    render json: {}
   end
 
   def callback

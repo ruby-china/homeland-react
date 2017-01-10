@@ -1,4 +1,7 @@
 import $ from 'jquery'
+global.jQuery = $
+require('jquery-ujs');
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -34,6 +37,13 @@ window.Homeland = {
       url: "https://ruby-china.org/api/v3" + path,
       data: data,
       headers: headers
+    });
+  },
+
+  signOut() {
+    return $.ajax({
+      url: "/oauth",
+      method: 'delete'
     });
   }
 };

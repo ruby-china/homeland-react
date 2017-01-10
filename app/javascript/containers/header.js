@@ -4,6 +4,13 @@ import { Link, IndexLink } from 'react-router';
 import { UserNameLink, UserAvatarLink } from 'components';
 
 export class Header extends Component {
+  signOut(e) {
+    e.preventDefault();
+    Homeland.signOut().then(() => {
+      location.href = "/";
+    });
+  }
+
   render() {
     const currentUser = window.currentUser;
 
@@ -28,7 +35,7 @@ export class Header extends Component {
                   <UserAvatarLink user={currentUser} className="nav-link" size="md" />
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/oauth" data-method="delete">登出</a>
+                  <a href="#" className="nav-link" onClick={this.signOut.bind(this)}>登出</a>
                 </li>
               </ul>
             )}
