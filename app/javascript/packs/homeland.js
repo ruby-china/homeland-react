@@ -33,11 +33,19 @@ window.Homeland = {
     if (window.currentUser) {
       headers['AUTHORIZATION'] = 'Bearer ' + window.currentUser.accessToken;
     }
-    return fetch("https://ruby-china.org/api/v3" + path, {
+    const fetchOpts = {
       method: method,
-      body: data,
-      headers: headers
-    }).then((res) => {
+      headers: headers,
+    };
+    if (method != 'GET') {
+      var formData = new FormData();
+      for (const key in data) {
+        formData.append(key, data[key]);
+      }
+      fetchOpts.body = formData;
+    }
+
+    return fetch("https://ruby-china.org/api/v3" + path, fetchOpts).then((res) => {
       return res.json();
     });
   },
