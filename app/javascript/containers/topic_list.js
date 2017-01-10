@@ -25,7 +25,6 @@ export class TopicList extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props != nextProps) {
       this.props = nextProps;
-      this.setState({ topics: null });
       this.fetchData()
     }
   }
@@ -131,13 +130,11 @@ export class NodeTopicList extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.params !== nextProps.params) {
-      console.log("--------- componentDidReceiveProps", nextProps.params.id);
       this.setState({ node_id: nextProps.params.id });
     }
   }
 
   render() {
-    console.log("--------- render", this.state.node_id);
     return (
       <TopicList type="node" node_id={this.state.node_id} />
     )
