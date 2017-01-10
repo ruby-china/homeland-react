@@ -10,7 +10,7 @@ export class NodeLink extends Component {
     }
 
     return (
-      <Link to={'/topics/node' + node.id} title="{node.name}" className="node-name">
+      <Link to={`/topics/node${node.id}`} title={node.name} className="node-name">
       {node.name}
       </Link>
     )

@@ -7,8 +7,8 @@ export class TopicList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      type: this.props.type || 'last_actived',
       topics: null,
+      t: new Date(),
     };
   }
 
@@ -19,22 +19,26 @@ export class TopicList extends Component {
   componentWillUnmount() {
     this.setState({
       topics: [],
-      type: null,
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props != nextProps) {
+      this.props = nextProps;
+      this.setState({ topics: null });
+      this.fetchData()
+    }
   }
 
   fetchData() {
     let path = "/topics.json";
-    let opts = {};
+    let opts = { type: this.props.type };
     if (this.props.type == 'user') {
       path = `/users/${this.props.login}/topics.json`;
     } else if (this.props.type == 'favorites') {
       path = `/users/${this.props.login}/favorites.json`;
-    } else {
-      opts = { type: this.state.type };
-      if (this.state.type == 'node') {
-        opts = { type: 'last_actived', node_id: this.props.node_id };
-      }
+    } else if (this.props.type == 'node') {
+      opts = { type: 'last_actived', node_id: this.props.node_id };
     }
 
     Homeland.fetch(path, opts).done(res => {
@@ -50,7 +54,7 @@ export class TopicList extends Component {
       list = this.renderTopics();
     }
     return (
-      <div className="topics">
+      <div className="topics" data-t={this.state.t}>
         <table className="table">
           <thead className="thead-default">
             <tr className="topic">
@@ -120,9 +124,22 @@ export class RecentTopicList extends TopicList {
 }
 
 export class NodeTopicList extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { node_id: this.props.params.id };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.params !== nextProps.params) {
+      console.log("--------- componentDidReceiveProps", nextProps.params.id);
+      this.setState({ node_id: nextProps.params.id });
+    }
+  }
+
   render() {
+    console.log("--------- render", this.state.node_id);
     return (
-      <TopicList type="node" node_id={this.props.params.id} />
+      <TopicList type="node" node_id={this.state.node_id} />
     )
   }
 }

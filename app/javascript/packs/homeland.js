@@ -23,8 +23,8 @@ import {
 } from 'containers';
 
 window.Homeland = {
-  fetch(path, opts) {
-    return Homeland.request('GET', path, null, opts);
+  fetch(path, data, opts) {
+    return Homeland.request('GET', path, data, opts);
   },
 
   request(method, path, data, opts) {
