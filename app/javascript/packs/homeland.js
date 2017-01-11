@@ -1,8 +1,10 @@
-import $ from 'jquery'
+const $ = require('jquery');
+global.$ = $;
 global.jQuery = $;
 require('jquery-ujs');
 
 import 'whatwg-fetch';
+const QueryString = require('query-string');
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
@@ -29,15 +31,22 @@ window.Homeland = {
   },
 
   request(method, path, data, opts) {
+    let url = "https://ruby-china.org/api/v3" + path;
     let headers = {};
+
+    // OAuth 2
     if (window.currentUser) {
       headers['AUTHORIZATION'] = 'Bearer ' + window.currentUser.accessToken;
     }
-    const fetchOpts = {
-      method: method,
-      headers: headers,
-    };
-    if (method != 'GET') {
+
+    // default option
+    const fetchOpts = { method: method, headers: headers };
+
+    // params
+    if (method === 'GET' || method === 'HEAD') {
+      let queryString = QueryString.stringify(data);
+      url = url + '?' + queryString;
+    } else {
       var formData = new FormData();
       for (const key in data) {
         formData.append(key, data[key]);
@@ -45,7 +54,7 @@ window.Homeland = {
       fetchOpts.body = formData;
     }
 
-    return fetch("https://ruby-china.org/api/v3" + path, fetchOpts).then((res) => {
+    return fetch(url, fetchOpts).then((res) => {
       return res.json();
     });
   },

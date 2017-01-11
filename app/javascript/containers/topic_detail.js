@@ -38,7 +38,7 @@ export class TopicDetail extends React.Component {
         meta: res.meta,
       });
     });
-    Homeland.fetch("/topics/" + this.props.params.id + "/replies.json").then(res => {
+    Homeland.fetch("/topics/" + this.props.params.id + "/replies.json", { limit: 50 }).then(res => {
       this.setState({
         replies: res.replies,
         user_liked_reply_ids: res.meta.user_liked_reply_ids,
@@ -47,12 +47,14 @@ export class TopicDetail extends React.Component {
   }
 
   onReplyClick(reply) {
-    const reply_body = this.refs.reply_body;
-    const additionBody = `@${reply.user.login} `
+    let additionBody = `@${reply.user.login}`;
+    if (reply.floor) {
+      additionBody = additionBody + ` #${reply.floor}楼`;
+    }
     this.setState({ showReplyPanel: true });
     setTimeout(() => {
-      $(reply_body).val(reply_body.value + additionBody);
-      reply_body.focus();
+      $(this.refs.reply_body).val(this.refs.reply_body.value + additionBody);
+      this.refs.reply_body.focus();
     }, 100)
   }
 
@@ -90,6 +92,7 @@ export class TopicDetail extends React.Component {
 
   closeReplyPanel(e) {
     if (e) { e.preventDefault(); }
+    $(this.refs.reply_body).val('');
     this.setState({ showReplyPanel: false });
   }
 
