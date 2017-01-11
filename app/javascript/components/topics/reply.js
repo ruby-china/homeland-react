@@ -15,27 +15,27 @@ export class Reply extends Component {
     this.setState({ showMore: true });
   }
 
-  onReplyClick() {
-    return this.props.onReplyClick();
+  onReplyClick(reply) {
+    return this.props.onReplyClick(reply);
   }
 
   render() {
-    var item = this.props.item;
-    var type = this.props.type;
-    var lightClass = this.props.highlight ? 'light' : '';
-    var popularClass = item.likes_count >= 5 && type === 'reply' ? 'popular' : '';
-
+    let item = this.props.item;
+    let type = this.props.type;
+    let lightClass = this.props.highlight ? 'light' : '';
+    let popularClass = item.likes_count >= 5 && type === 'reply' ? 'popular' : '';
+    let elId = `${type}-${item.id}`;
     const moreButtons = this.renderMoreButtons();
 
     return (
-      <div className={`reply reply-${type} ${lightClass} ${popularClass} media`}>
+      <div id={elId} className={`reply reply-${type} ${lightClass} ${popularClass} media`}>
         <div className="d-flex align-self-start mr-3">
           <UserAvatarLink user={item.user} />
         </div>
         <div className="media-body">
           <div className="mt-0 media-heading">
             <UserNameLink user={item.user} />
-            <span className="date float-xs-right">
+            <span className="date float-right">
               <Timeago time={item.created_at} />
             </span>
           </div>
@@ -45,7 +45,7 @@ export class Reply extends Component {
 
             <span className="float-right opts">
               {moreButtons}
-              <IconButton icon="reply" onClick={this.onReplyClick.bind(this)} />
+              <IconButton icon="reply" onClick={this.onReplyClick.bind(this, item)} />
             </span>
           </div>
         </div>

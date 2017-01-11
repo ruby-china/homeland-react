@@ -11,13 +11,24 @@ export class TopicDetail extends React.Component {
       replies: [],
       user_liked_reply_ids: [],
       showReplyPanel: false,
-      highlightTopicId: null,
+      reply_id: null,
       form: {},
     };
   }
 
   componentDidMount() {
+    // highlight Reply by params
+    if (this.props.params.reply_id) {
+      this.highlightReply(this.props.params.reply_id);
+    }
+
     this.fetchData();
+  }
+
+  componentDidUpdate() {
+    // scrollTo state.reply_id
+    const replyEl = document.getElementById(`reply-${this.state.reply_id}`);
+    if (replyEl) { scrollTo(0, replyEl.offsetTop) }
   }
 
   fetchData() {
@@ -35,10 +46,13 @@ export class TopicDetail extends React.Component {
     });
   }
 
-  onReplyClick() {
+  onReplyClick(reply) {
+    const reply_body = this.refs.reply_body;
+    const additionBody = `@${reply.user.login} `
     this.setState({ showReplyPanel: true });
     setTimeout(() => {
-      this.refs.reply_body.focus();
+      $(reply_body).val(reply_body.value + additionBody);
+      reply_body.focus();
     }, 100)
   }
 
@@ -52,13 +66,18 @@ export class TopicDetail extends React.Component {
         <div className="row">
           <div className="col">
             <div className="topic-content">
-              <Reply key="reply-topic" item={topic} type="topic" state={this.state.meta.liked} onReplyClick={this.onReplyClick.bind(this)} />
+              <Reply key={`topic-${topic.id}`} item={topic} type="topic" state={this.state.meta.liked} onReplyClick={this.onReplyClick.bind(this, topic)} />
             </div>
             <div className="replies">
-              {this.state.replies.map(reply => {
+              {this.state.replies.map((reply, i) => {
+                reply.floor = i + 1;
                 const liked = this.state.user_liked_reply_ids.indexOf(reply.id) !== -1;
-                const highlight = this.state.highlightTopicId == reply.id;
-                return <Reply key={`reply-${reply.id}`} item={reply} type="reply" highlight={highlight} state={liked} onReplyClick={this.onReplyClick.bind(this)} />
+                const highlight = this.state.reply_id == reply.id;
+                return (<Reply item={reply} key={`reply-${reply.id}`}
+                               type="reply"
+                               highlight={highlight}
+                               state={liked}
+                               onReplyClick={this.onReplyClick.bind(this, reply)} />)
               })}
             </div>
           </div>
@@ -81,16 +100,16 @@ export class TopicDetail extends React.Component {
     const path = `/topics/${this.state.topic.id}/replies`;
     Homeland.request('POST', path, data).then(res => {
       this.state.replies.push(res.reply);
-      this.highlightTopic(res.reply.id)
+      this.highlightReply(res.reply.id)
       this.closeReplyPanel();
     })
   }
 
-  highlightTopic(id) {
-    clearTimeout(this.highlightTopicTimer);
-    this.setState({ highlightTopicId: id });
-    this.highlightTopicTimer = setTimeout(() => {
-      this.setState({ highlightTopicId: null });
+  highlightReply(id) {
+    clearTimeout(this.highlightReplyTimer);
+    this.setState({ reply_id: id });
+    this.highlightReplyTimer = setTimeout(() => {
+      this.setState({ reply_id: null });
     }, 5000);
   }
 

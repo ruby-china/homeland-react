@@ -146,6 +146,7 @@ time { border-bottom: 1px dashed #eee; color: #666; font-size: 12px; }
       margin-bottom: 8px;
 
       .user-name { color: #666; font-weight: bold; }
+      .floor { color: darken($green, 5%); margin-right: 5px; }
       .date { margin-left: 5px; }
     }
 

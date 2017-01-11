@@ -93,7 +93,7 @@ export class TopicList extends Component {
     }
 
     return this.state.topics.map(topic => {
-      return <Topic key={topic.id} topic={topic} />
+      return <Topic key={`topic-item-${topic.id}`} topic={topic} />
     })
   }
 }

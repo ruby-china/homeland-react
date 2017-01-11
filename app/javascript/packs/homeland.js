@@ -67,7 +67,7 @@ var routes =
       <Route path="topics/popular" component={PopularTopicList} />
       <Route path="topics/recent" component={RecentTopicList} />
       <Route path="topics/node:id" component={NodeTopicList} />
-      <Route path="topics/:id" component={TopicDetail} />
+      <Route path="topics/:id(/r/:reply_id)" component={TopicDetail} />
       <Route path=":id" component={User}>
         <IndexRoute component={UserTopicList} />
         <Route path="replies" component={UserReplies} />
