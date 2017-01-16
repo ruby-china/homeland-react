@@ -105,21 +105,19 @@ export class Reply extends Component {
     switch (item.action) {
       case 'close': {
         content = (<span>关闭了讨论</span>);
+        break;
       }
       case 'excellent': {
-        content = (
-          <span>将本帖设为了精华贴</span>
-        )
+        content = (<span>将本帖设为了精华贴</span>);
+        break;
       }
       case 'reopen': {
-        content = (
-          <span>重新开启了讨论</span>
-        )
+        content = (<span>重新开启了讨论</span>);
+        break;
       }
       case 'unexcellent': {
-        content = (
-          <span>取消了精华贴</span>
-        )
+        content = (<span>取消了精华贴</span>);
+        break;
       }
       case 'mention': {
         if (item.mention_topic) {
@@ -133,7 +131,7 @@ export class Reply extends Component {
             </span>
           )
         }
-
+        break;
       }
     }
 
