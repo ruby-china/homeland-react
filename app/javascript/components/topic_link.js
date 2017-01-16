@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 export class TopicLink extends Component {
   render() {
     let topic = this.props.topic;
+    if (!topic) { return ''; }
     const excellent = topic.excellent === 1;
 
     return (
