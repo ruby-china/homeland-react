@@ -10,7 +10,7 @@ module.exports = merge(config, {
   output: { filename: "[name]-[hash].js" },
 
   plugins: [
-    new webpack.optimize.LoaderOptionsPlugin({
+    new webpack.LoaderOptionsPlugin({
       minimize: true
     })
   ]
