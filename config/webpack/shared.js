@@ -16,7 +16,7 @@ module.exports = {
     }
   ),
 
-  output: { filename: '[name].js', path: path.join('..', 'public', 'packs') },
+  output: { filename: '[name].js', path: path.resolve('..', 'public', 'packs') },
 
   module: {
     rules: [
