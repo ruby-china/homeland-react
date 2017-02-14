@@ -66,9 +66,8 @@ export class Reply extends Component {
       </div>
       <div className="markdown" dangerouslySetInnerHTML={{ __html: item.body_html }} />
       <div className="media-footer clearfix">
-        <LikeButton item={item} type={type} state={this.props.state} />
-
         <span className="float-right opts">
+          <LikeButton item={item} type={type} state={this.props.state} />
           {moreButtons}
           <IconButton icon="reply" onClick={this.onReplyClick.bind(this, item)} />
         </span>

@@ -1,11 +1,11 @@
 GIT
   remote: https://github.com/rails/webpacker.git
-  revision: ce14b6961fb5d19e0455e2b912a4bb9efce68f87
+  revision: 023e5dbda8fd8bbe6e6f24788b0b45a3e72080ff
   specs:
-    webpacker (0.1)
-      activesupport (>= 3.0.0, < 5.1)
+    webpacker (0.2)
+      activesupport (>= 5.0)
       multi_json (~> 1.2)
-      railties (~> 5)
+      railties (>= 5.0)
 
 GEM
   remote: https://rubygems.org/
@@ -53,7 +53,7 @@ GEM
     bootstrap (4.0.0.alpha6)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
-    builder (3.2.2)
+    builder (3.2.3)
     byebug (9.0.6)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -74,7 +74,7 @@ GEM
       thor (~> 0.19.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-    i18n (0.7.0)
+    i18n (0.8.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)

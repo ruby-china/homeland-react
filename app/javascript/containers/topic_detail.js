@@ -66,7 +66,7 @@ export class TopicDetail extends React.Component {
       <div className="topic-detail">
         <h1><NodeLink node={topic} /> {topic.title}</h1>
         <div className="row">
-          <div className="col">
+          <div className="col-md-9">
             <div className="topic-content">
               <Reply key={`topic-${topic.id}`} item={topic} type="topic" state={this.state.meta.liked} onReplyClick={this.onReplyClick.bind(this, topic)} />
             </div>
@@ -83,7 +83,7 @@ export class TopicDetail extends React.Component {
               })}
             </div>
           </div>
-          <div className="col hidden-md-down col-lg-3"></div>
+          <div className="hidden-md-down col-md-3"></div>
         </div>
         {this.renderReplyPanel()}
       </div>

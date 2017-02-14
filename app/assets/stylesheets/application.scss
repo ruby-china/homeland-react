@@ -33,6 +33,10 @@ body {
   margin-top: 30px;
 }
 
+.media-body {
+  overflow: hidden;
+}
+
 .data-loading {
   padding: 50px 0;
   text-align: center;
@@ -97,6 +101,11 @@ time { border-bottom: 1px dashed #eee; color: #666; font-size: 12px; }
 }
 
 .topics {
+  .table thead th {
+    background: #f5f5f5;
+    border-bottom: 0px;
+    border-top: 0px;
+  }
   .topic {
     font-size: 13px;
     td { padding-top: 13px; padding-bottom: 13px; }
@@ -182,7 +191,8 @@ time { border-bottom: 1px dashed #eee; color: #666; font-size: 12px; }
       }
     }
     .media-footer {
-      margin: 15px -8px 0px -8px;
+      margin-top: 15px;
+
       .btn-icon {
         margin-right: 6px;
         font-size: 14px;
