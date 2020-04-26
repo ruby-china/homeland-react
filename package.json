@@ -1,6 +1,9 @@
 {
   "name": "ract-homeland",
   "private": true,
+  "engines": {
+    "node": "13"
+  },
   "scripts": {
     "start": "./bin/webpack-dev-server",
     "lint": "yarn run eslint -- --ext .js --ext .jsx app/javascript",
