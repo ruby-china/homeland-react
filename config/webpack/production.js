@@ -1,17 +1,5 @@
-// Note: You must restart bin/webpack-watcher for changes to take effect
+process.env.NODE_ENV = process.env.NODE_ENV || 'production'
 
-var path    = require('path')
-var webpack = require('webpack')
-var merge   = require('webpack-merge')
+const environment = require('./environment')
 
-var config = require('./shared.js')
-
-module.exports = merge(config, {
-  output: { filename: "[name]-[hash].js" },
-
-  plugins: [
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  ]
-})
+module.exports = environment.toWebpackConfig()

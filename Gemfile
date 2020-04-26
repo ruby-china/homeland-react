@@ -1,23 +1,21 @@
 source 'https://rubygems.org'
-ruby "2.3.2"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 6'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
-gem 'puma', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'jbuilder', '~> 2.5'
+gem 'puma'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'jbuilder'
 
 gem 'foreman'
-gem 'bootstrap', '4.0.0.alpha6'
+gem 'bootstrap', '~> 4'
 gem 'font-awesome-rails'
-gem 'webpacker', github: 'rails/webpacker'
+gem 'webpacker'
 
 gem 'oauth2'
 gem 'faraday'
