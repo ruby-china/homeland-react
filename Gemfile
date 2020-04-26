@@ -13,8 +13,6 @@ gem 'uglifier'
 gem 'jbuilder'
 
 gem 'foreman'
-gem 'bootstrap', '~> 4'
-gem 'font-awesome-rails'
 gem 'webpacker'
 
 gem 'oauth2'
