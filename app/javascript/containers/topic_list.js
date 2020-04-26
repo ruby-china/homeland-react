@@ -2,9 +2,10 @@ import React from 'react';
 import { Component } from 'react';
 import { Link } from 'react-router';
 import { Topic } from 'components'
+import ContentLoader from 'react-content-loader'
 
 export class TopicList extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       topics: null,
@@ -44,6 +45,7 @@ export class TopicList extends Component {
       this.setState({
         topics: res.topics
       });
+
     });
   }
 
@@ -57,14 +59,14 @@ export class TopicList extends Component {
         <table className="table">
           <thead className="thead-default">
             <tr className="topic">
+              <th className="author hidden-xs-down"></th>
               <th className="title">标题</th>
-              <th className="author hidden-xs-down">作者</th>
               <th className="replies hidden-md-down">回帖/赞</th>
               <th className="activity hidden-md-down">更新</th>
             </tr>
           </thead>
           <tbody>
-          {list}
+            {list}
           </tbody>
         </table>
       </div>
@@ -74,8 +76,61 @@ export class TopicList extends Component {
   loading() {
     return (
       <tr className="topic topic-loading">
-        <td colSpan="4" className="text-center">
-          <div>载入中，请稍后...</div>
+        <td colSpan="5" className="text-center" style={{ padding: "0" }}>
+          <ContentLoader
+            speed={1}
+            width={1100}
+            height={640}
+            viewBox="0 0 1100 640"
+            backgroundColor="#f3f3f3"
+            foregroundColor="#ecebeb"
+          >
+            <rect x="80" y="63" rx="2" ry="2" width="571" height="26" />
+            <circle cx="26" cy="77" r="14" />
+            <rect x="875" y="63" rx="0" ry="0" width="71" height="26" />
+            <rect x="1006" y="63" rx="0" ry="0" width="90" height="26" />
+            <rect x="80" y="111" rx="2" ry="2" width="488" height="26" />
+            <circle cx="26" cy="124" r="14" />
+            <rect x="875" y="110" rx="0" ry="0" width="86" height="26" />
+            <rect x="1006" y="110" rx="0" ry="0" width="75" height="26" />
+            <rect x="0" y="98" rx="0" ry="0" width="1100" height="1" />
+            <rect x="80" y="160" rx="2" ry="2" width="665" height="26" />
+            <circle cx="26" cy="174" r="14" />
+            <rect x="875" y="160" rx="0" ry="0" width="77" height="26" />
+            <rect x="1006" y="160" rx="0" ry="0" width="77" height="26" />
+            <rect x="0" y="148" rx="0" ry="0" width="1100" height="1" />
+            <rect x="80" y="210" rx="2" ry="2" width="357" height="26" />
+            <circle cx="25" cy="224" r="14" />
+            <rect x="875" y="210" rx="0" ry="0" width="61" height="26" />
+            <rect x="1006" y="210" rx="0" ry="0" width="65" height="26" />
+            <rect x="0" y="198" rx="0" ry="0" width="1100" height="1" />
+            <rect x="80" y="10" rx="2" ry="2" width="420" height="26" />
+            <circle cx="25" cy="24" r="14" />
+            <rect x="875" y="10" rx="0" ry="0" width="61" height="26" />
+            <rect x="1006" y="10" rx="0" ry="0" width="65" height="26" />
+            <rect x="1" y="-2" rx="0" ry="0" width="1128" height="1" />
+            <rect x="80" y="261" rx="2" ry="2" width="589" height="26" />
+            <circle cx="26" cy="275" r="14" />
+            <rect x="875" y="262" rx="0" ry="0" width="77" height="26" />
+            <rect x="1006" y="261" rx="0" ry="0" width="46" height="26" />
+            <rect x="0" y="249" rx="0" ry="0" width="1100" height="1" />
+            <rect x="0" y="49" rx="0" ry="0" width="1100" height="2" />
+            <rect x="81" y="306" rx="2" ry="2" width="459" height="26" />
+            <circle cx="27" cy="320" r="14" />
+            <rect x="876" y="306" rx="0" ry="0" width="56" height="26" />
+            <rect x="1007" y="306" rx="0" ry="0" width="93" height="26" />
+            <rect x="1" y="294" rx="0" ry="0" width="1100" height="1" />
+            <rect x="81" y="356" rx="2" ry="2" width="525" height="26" />
+            <circle cx="26" cy="370" r="14" />
+            <rect x="876" y="356" rx="0" ry="0" width="61" height="26" />
+            <rect x="1007" y="356" rx="0" ry="0" width="74" height="26" />
+            <rect x="1" y="344" rx="0" ry="0" width="1100" height="1" />
+            <rect x="81" y="405" rx="2" ry="2" width="514" height="26" />
+            <circle cx="27" cy="419" r="14" />
+            <rect x="876" y="406" rx="0" ry="0" width="77" height="26" />
+            <rect x="1007" y="405" rx="0" ry="0" width="77" height="26" />
+            <rect x="1" y="393" rx="0" ry="0" width="1100" height="1" />
+          </ContentLoader>
         </td>
       </tr>
     )

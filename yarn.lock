@@ -6112,6 +6112,11 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-content-loader@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.npm.taobao.org/react-content-loader/download/react-content-loader-5.0.4.tgz?cache=0&sync_timestamp=1586337009256&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-content-loader%2Fdownload%2Freact-content-loader-5.0.4.tgz#1493491d2f6b309d281d84144a655417ea734486"
+  integrity sha1-FJNJHS9rMJ0oHYQUSmVUF+pzRIY=
+
 react-dom@^15:
   version "15.6.2"
   resolved "https://registry.npm.taobao.org/react-dom/download/react-dom-15.6.2.tgz?cache=0&sync_timestamp=1586484581716&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-dom%2Fdownload%2Freact-dom-15.6.2.tgz#41cfadf693b757faf2708443a1d1fd5a02bef730"

@@ -9,11 +9,11 @@ export class Topic extends Component {
 
     return (
       <tr className="topic" id={'topic-' + topic.id}>
-        <td className="title">
-          <TopicLink topic={topic} />
-        </td>
         <td className="author hidden-xs-down">
           <UserAvatarLink user={topic.user} />
+        </td>
+        <td className="title">
+          <TopicLink topic={topic} />
         </td>
         <td className="replies hidden-md-down">
           <span><i className="fa fa-comments"></i> {topic.replies_count}</span>

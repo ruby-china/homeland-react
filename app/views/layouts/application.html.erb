@@ -10,22 +10,21 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
-
   <body>
     <%= yield %>
   </body>
   <script type="text/javascript">
-  <% if current_user %>
-  window.currentUser = {
-    "id" : <%= current_user[:id] %>,
-    "name" : "<%= current_user[:name] %>",
-    "login" : "<%= current_user[:login] %>",
-    "avatar_url" : "<%= current_user[:avatar_url] %>",
-    "accessToken" : "<%= current_user.dig(:token, :access_token) %>"
-  };
-  <% else %>
-  window.currentUser = null;
-  <% end %>
+    <% if current_user %>
+    window.currentUser = {
+      "id" : <%= current_user[:id] %>,
+      "name" : "<%= current_user[:name] %>",
+      "login" : "<%= current_user[:login] %>",
+      "avatar_url" : "<%= current_user[:avatar_url] %>",
+      "accessToken" : "<%= current_user.dig(:token, :access_token) %>"
+    };
+    <% else %>
+    window.currentUser = null;
+    <% end %>
   </script>
   <%= javascript_pack_tag 'vendor' %>
   <%= javascript_pack_tag 'homeland' %>

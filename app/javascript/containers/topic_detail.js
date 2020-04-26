@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Reply, NodeLink, PageLoading } from 'components'
+import { Reply, NodeLink } from 'components'
+import ContentLoader from 'react-content-loader'
 
 export class TopicDetail extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       topic: null,
@@ -32,13 +33,13 @@ export class TopicDetail extends React.Component {
   }
 
   fetchData() {
-    Homeland.fetch("/topics/"+ this.props.params.id +".json").then(res => {
+    Homeland.fetch("/topics/" + this.props.params.id + ".json").then(res => {
       this.setState({
         topic: res.topic,
         meta: res.meta,
       });
     });
-    Homeland.fetch("/topics/" + this.props.params.id + "/replies.json", { limit: 50 }).then(res => {
+    Homeland.fetch("/topics/" + this.props.params.id + "/replies.json", { limit: 100 }).then(res => {
       this.setState({
         replies: res.replies,
         user_liked_reply_ids: res.meta.user_liked_reply_ids,
@@ -60,7 +61,36 @@ export class TopicDetail extends React.Component {
 
   render() {
     const topic = this.state.topic;
-    if (!topic) { return <PageLoading text="载入中..." />; }
+    if (!topic) {
+      return <ContentLoader
+        speed={1}
+        width={1100}
+        height={640}
+        viewBox="0 0 1100 640"
+        backgroundColor="#f3f3f3"
+        foregroundColor="#ecebeb"
+      >
+        <rect x="14" y="0" rx="0" ry="0" width="92" height="26" />
+        <rect x="48" y="17" rx="0" ry="0" width="3" height="1" />
+        <rect x="124" y="0" rx="0" ry="0" width="526" height="26" />
+        <circle cx="40" cy="87" r="24" />
+        <rect x="76" y="65" rx="0" ry="0" width="85" height="16" />
+        <rect x="76" y="91" rx="0" ry="0" width="729" height="16" />
+        <rect x="76" y="117" rx="0" ry="0" width="614" height="17" />
+        <rect x="76" y="144" rx="0" ry="0" width="553" height="18" />
+        <rect x="76" y="172" rx="0" ry="0" width="651" height="17" />
+        <circle cx="41" cy="240" r="24" />
+        <rect x="77" y="218" rx="0" ry="0" width="144" height="16" />
+        <rect x="77" y="244" rx="0" ry="0" width="569" height="16" />
+        <rect x="77" y="270" rx="0" ry="0" width="503" height="17" />
+        <rect x="77" y="297" rx="0" ry="0" width="553" height="18" />
+        <circle cx="40" cy="361" r="24" />
+        <rect x="76" y="339" rx="0" ry="0" width="70" height="16" />
+        <rect x="76" y="365" rx="0" ry="0" width="649" height="16" />
+        <rect x="76" y="391" rx="0" ry="0" width="704" height="17" />
+        <rect x="76" y="418" rx="0" ry="0" width="365" height="18" />
+      </ContentLoader>;
+    }
 
     return (
       <div className="topic-detail">
@@ -76,10 +106,10 @@ export class TopicDetail extends React.Component {
                 const liked = this.state.user_liked_reply_ids.indexOf(reply.id) !== -1;
                 const highlight = this.state.reply_id == reply.id;
                 return (<Reply item={reply} key={`reply-${reply.id}`}
-                               type="reply"
-                               highlight={highlight}
-                               state={liked}
-                               onReplyClick={this.onReplyClick.bind(this, reply)} />)
+                  type="reply"
+                  highlight={highlight}
+                  state={liked}
+                  onReplyClick={this.onReplyClick.bind(this, reply)} />)
               })}
             </div>
           </div>
