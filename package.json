@@ -2,7 +2,7 @@
   "name": "ract-homeland",
   "private": true,
   "engines": {
-    "node": "13"
+    "node": "10"
   },
   "scripts": {
     "start": "./bin/webpack-dev-server",
@@ -24,8 +24,9 @@
     "react-dom": "^15",
     "react-router": "^3",
     "timeago-react": "^3.0.0",
-    "webpack": "^4.43.0",
-    "webpack-dev-server": "^3.10.3",
     "whatwg-fetch": "^2.0.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
   }
 }
