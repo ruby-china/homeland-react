@@ -2,7 +2,7 @@
   "name": "ract-homeland",
   "private": true,
   "engines": {
-    "node": "14"
+    "node": ">= 12"
   },
   "scripts": {
     "start": "./bin/webpack-dev-server",
