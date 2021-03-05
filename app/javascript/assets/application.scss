@@ -1,17 +1,11 @@
-/*
- *= require bootstrap-theme
- *= require markdown
- *= require_self
- */
+$la-font-path: "~line-awesome/dist/line-awesome/fonts";
+@import "~line-awesome/dist/line-awesome/scss/line-awesome.scss";
 @import "./vars";
-$fa-font-path: "~@fortawesome/fontawesome-free-webfonts/webfonts";
-@import "~@fortawesome/fontawesome-free-webfonts/scss/fontawesome";
-@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid";
 @import "./bootstrap-theme";
 @import "./markdown";
 
 body {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #footer {
@@ -132,9 +126,9 @@ time {
     color: #888;
     font-weight: normal;
   }
-  i.fa {
+  i.las {
     margin-left: 5px;
-    &.fa-diamond {
+    &.las-gem {
       color: $red;
     }
   }
@@ -168,10 +162,10 @@ time {
       span {
         margin-right: 10px;
       }
-      i.fa {
+      i.las {
         color: lighten($black, 60%);
       }
-      i.fa-heart {
+      i.la-heart {
         color: lighten($red, 20%);
       }
     }

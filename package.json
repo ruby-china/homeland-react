@@ -2,7 +2,7 @@
   "name": "ract-homeland",
   "private": true,
   "engines": {
-    "node": "10"
+    "node": "14"
   },
   "scripts": {
     "start": "./bin/webpack-dev-server",
@@ -11,12 +11,11 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.9.4",
-    "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
+    "@rails/ujs": "^6.1.3",
     "@rails/webpacker": "^5.1.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^4.4.1",
-    "jquery": "^3.5.0",
-    "jquery-ujs": "^1.2.2",
+    "line-awesome": "^1.3.0",
     "prop-types": "^15.7.2",
     "query-string": "^4.2.3",
     "react": "^15",

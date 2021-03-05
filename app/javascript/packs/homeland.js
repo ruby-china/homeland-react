@@ -1,13 +1,10 @@
-const $ = require('jquery');
-global.$ = $;
-global.jQuery = $;
-require('jquery-ujs');
+import "whatwg-fetch";
+import React from "react";
+import ReactDOM from "react-dom";
+import { Router, Route, IndexRoute, browserHistory } from "react-router";
 
-import 'whatwg-fetch';
-const QueryString = require('query-string');
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+const QueryString = require("query-string");
+
 import {
   App,
   Home,
@@ -23,11 +20,15 @@ import {
   UserReplies,
   UserFollowers,
   UserFollowing,
-} from 'containers';
+} from "containers";
+
+const csrfToken = document
+  .querySelector('meta[name="csrf-token"]')
+  .getAttribute("content");
 
 window.Homeland = {
   fetch(path, data, opts) {
-    return Homeland.request('GET', path, data, opts);
+    return Homeland.request("GET", path, data, opts);
   },
 
   request(method, path, data, opts) {
@@ -36,16 +37,16 @@ window.Homeland = {
 
     // OAuth 2
     if (window.currentUser) {
-      headers['AUTHORIZATION'] = 'Bearer ' + window.currentUser.accessToken;
+      headers["AUTHORIZATION"] = "Bearer " + window.currentUser.accessToken;
     }
 
     // default option
     const fetchOpts = { method: method, headers: headers };
 
     // params
-    if (method === 'GET' || method === 'HEAD') {
+    if (method === "GET" || method === "HEAD") {
       let queryString = QueryString.stringify(data);
-      url = url + '?' + queryString;
+      url = url + "?" + queryString;
     } else {
       var formData = new FormData();
       for (const key in data) {
@@ -60,14 +61,16 @@ window.Homeland = {
   },
 
   signOut() {
-    return $.ajax({
-      url: "/oauth",
-      method: 'delete'
+    return fetch("/oauth", {
+      headers: {
+        "X-CSRF-Token": csrfToken,
+      },
+      method: "delete",
     });
-  }
+  },
 };
 
-var routes =
+var routes = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
@@ -86,7 +89,8 @@ var routes =
       </Route>
     </Route>
   </Router>
+);
 
-document.addEventListener("DOMContentLoaded", e => {
-  ReactDOM.render(routes, document.getElementById('root'))
+document.addEventListener("DOMContentLoaded", (e) => {
+  ReactDOM.render(routes, document.getElementById("root"));
 });
